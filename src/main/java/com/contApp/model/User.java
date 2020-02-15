@@ -1,23 +1,27 @@
 package com.contApp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
 @Id
-@GeneratedValue(strategy= GenerationType.AUTO)
+@GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String email;
     private String password;
     private boolean isAdmin;
     private String userName;
+
+   @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Firm firm;
 
     public User() {
     }
+public User(String email, String password){
+        this.email=email;
+        this.password=password;
+
+}
 
     public int getId() {
         return id;

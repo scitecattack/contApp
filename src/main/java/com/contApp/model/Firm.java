@@ -1,21 +1,33 @@
 package com.contApp.model;
 
-import org.hibernate.annotations.GeneratorType;
-
-import javax.persistence.Entity;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 public class Firm {
     @Id
-    @GenerationType(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int firmId;
     private String firmName;
     private Date scadency;
-   private User user;
+
+    @OneToOne(mappedBy = "firm", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private User user;
+
+   @OneToMany(mappedBy = "firm", cascade = CascadeType.ALL)
+   private List<Supplier> supplierList;
+
+    public Firm() {
+    }
+
+    public List<Supplier> getSupplierList() {
+        return supplierList;
+    }
+
+    public void setSupplierList(List<Supplier> supplierList) {
+        this.supplierList = supplierList;
+    }
 
     public User getUser() {
         return user;
@@ -23,9 +35,6 @@ public class Firm {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Firm() {
     }
 
     public int getFirmId() {

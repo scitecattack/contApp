@@ -1,10 +1,14 @@
 package com.contApp.model;
 
+import javax.persistence.*;
 import java.util.Date;
-
+@Entity
 public class Payment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int paymentId;
     private int paymentNumber;
+    @OneToOne
     private Invoice invoice;
     private PaymentMethod  paymentMethod;
     private Date paymentDate;
