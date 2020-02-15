@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ContApp</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="row" id="header">
+    <div class="col-md-3 col-md-offset-9">
+        <img src="img/header.png" alt="cant display">
+    </div>
+</div>
+<div class="container">
+
+    <br>
+    <div class="container p-1 my-lg-1 bg-primary text-white rounded">
+        <h2>Please log in:</h2>
+    </div>
+    <br>
+    <div class="form-group">
+        <form action="#" method="post" th:action="@{/getUserForm}" th:object="${user}">
+
+            <input class="form-control form-control-lg col-sm-4" placeholder="E-mail..." th:value="${email}" type="email"/><br> <!-- th:field="*{name} da eroare Error during execution of processor 'org.thymeleaf.spring5.processor.SpringInputGeneralFieldTagProcessor' -->
+
+           <input type="text" class="form-control form-control-lg col-sm-4" placeholder="Password..." th:value="${password}"/><br> <!--Error during execution of processor 'org.thymeleaf.spring5.processor.SpringInputGeneralFieldTagProcessor'-->
+
+            <button type="submit" value="Submit" class="btn btn-primary btn-lg">Enter</button>
+
+        </form>
+    </div>
+</div>
+
+</body>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</html>
