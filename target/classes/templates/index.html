@@ -11,23 +11,29 @@
         <img src="img/header.png" alt="cant display">
     </div>
 </div>
-<div class="container">
-
-    <br>
+<div class="container"><br>
     <div class="container p-1 my-lg-1 bg-primary text-white rounded">
         <h2>Please log in:</h2>
-    </div>
-    <br>
+    </div><br>
+
     <div class="form-group">
-        <form action="#" method="post" th:action="@{/getUserForm}" th:object="${user}">
-
-            <input class="form-control form-control-lg col-sm-4" placeholder="E-mail..." th:value="${email}" type="email"/><br> <!-- th:field="*{name} da eroare Error during execution of processor 'org.thymeleaf.spring5.processor.SpringInputGeneralFieldTagProcessor' -->
-
-           <input type="text" class="form-control form-control-lg col-sm-4" placeholder="Password..." th:value="${password}"/><br> <!--Error during execution of processor 'org.thymeleaf.spring5.processor.SpringInputGeneralFieldTagProcessor'-->
-
+        <form action="#" method="post" th:action="@{/welcome.html}" th:object="${userList}">
+            <input class="form-control form-control-lg col-sm-4" placeholder="E-mail..." type="email"/><br>
+            <input type="text" class="form-control form-control-lg col-sm-4" placeholder="Password..." /><br>
             <button type="submit" value="Submit" class="btn btn-primary btn-lg">Enter</button>
-
         </form>
+    </div><br>
+
+    <div class="container p-1 my-lg-1 bg-primary text-white rounded">
+        <h2>New user? Create Account:</h2>
+    </div><br>
+    <div class="form-group">
+<form action="#" method="post" th:action="@{/*}" th:object="${user}">
+    <input class="form-control form-control-lg col-sm-4" placeholder="Username..." th:field="*{userName}"><br>
+    <input class="form-control form-control-lg col-sm-4" placeholder="E-mail..." th:field="*{email}" type="email"><br>
+    <input class="form-control form-control-lg col-sm-4" placeholder="Password..." th:field="*{password}"><br>
+    <button type="submit" value="Submit" class="btn btn-primary btn-lg">Submit</button>
+</form>
     </div>
 </div>
 

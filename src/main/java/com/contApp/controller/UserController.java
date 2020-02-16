@@ -19,17 +19,20 @@ public class UserController  {
 
     @GetMapping("/*")
     public String getUserForm(Model model) {  //return a string of the viewname called "index"
-
         model.addAttribute("user", new User());
-        model.addAttribute("user", userRepository.findAll());
-
             return "index";
         }
+
+     @GetMapping("/login")
+     public String userLogin(Model model){
+          model.addAttribute("userList", userRepository.findAll());
+         return "index";
+     }
 
 
         @PostMapping("/*")
         public String userSubmit (@ModelAttribute User user, Model model){
         model.addAttribute("user", user);
-            return "randy";
+            return "welcome";
         }
     }
